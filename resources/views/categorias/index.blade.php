@@ -17,21 +17,16 @@
             </svg>
         </button>
 
-        <aside id="logo-sidebar"
-            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-            aria-label="Sidebar">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                <a href="{{ route('dashboard') }}" class="flex items-center ps-2.5 mb-5">
-                    <svg class="h-6 me-3 sm:h-7 text-slate-600" width="24" height="24" viewBox="0 0 24 24"
-                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round">
+                <a href="{{ route('dashboard') }}"  class="flex items-center ps-2.5 mb-5">
+                    <svg class="h-6 me-3 sm:h-7 text-slate-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <polyline points="5 12 3 12 12 3 21 12 19 12" />
                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                         <rect x="10" y="12" width="4" height="4" />
                     </svg>
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Plaza
-                        Jengibre</span>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Plaza Jengibre</span>
                 </a>
                 <ul class="space-y-2 font-medium">
                     <li class="mb-4">
@@ -73,7 +68,7 @@
                         </a>
                     </li>
                     <li class="mb-4">    
-                        <a href="{{ route('productos.index') }}"
+                        <a href="{{ route('categorias.index') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -105,34 +100,81 @@
                 </ul>
             </div>
         </aside>
-
-        <div class="grid grid-cols-3 gap-4">
-            <div class="flex justify-center mb-4">
-
-                <img src="https://cdn0.ecologiaverde.com/es/posts/1/6/3/datiles_propiedades_beneficios_y_contraindicaciones_4361_600.jpg"
-                    class="h-80 w-auto rounded-lg shadow-4-strong" alt="Hollywood Sign on The Hill" />
-            </div>
-            <div class="flex justify-center mb-4">
-                <img src="https://aprende.com/wp-content/uploads/2022/02/7-beneficios-de-los-frutos-secos-infografia.jpg"
-                    class="h-90 w-auto rounded-lg shadow-4-strong" alt="Five Lands National Park" />
-            </div>
-            <div class="flex justify-center mb-4">
-                <img src="https://ipsmisiones.com.ar/wp-content/uploads/2022/02/IMG-20220219-WA0043.jpg"
-                    class="h-80 w-auto rounded-lg shadow-4-strong" alt="Los Angeles Skyscrapers" />
-            </div>
-        </div>
-
-
-
-        </div>
-        </div>
-        </div>
-
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+               
 
+                <div class="flex items-center">
+                    <h3 class="font-bold text-2xl mr-12">Categorias</h3>
+
+                    <a href="{{ route('categorias.create') }}" class="mr-12">
+                        <button type="button"
+                            class="inline-block rounded bg-green-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-green-600 hover:shadow-md focus:bg-green-600 focus:shadow-md focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-md motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
+                            Crear Categoria
+                        </button>
+                    </a>
+                    <form action="{{ route('buscar.categoria') }}" method="GET">
+                        <div class="flex items-center">
+                            <input type="text" name="nombre"
+                                class="px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                                placeholder="Nombre de la Categoria" required>
+                            <button type="submit"
+                                class="ml-2 inline-block bg-blue-500 px-6 py-2.5 text-xs font-medium uppercase text-white rounded-md shadow-md transition duration-150 ease-in-out hover:bg-blue-600 focus:bg-blue-600 focus:outline-none focus:shadow-md active:bg-green-700">
+                                Buscar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                            <div class="overflow-hidden">
+                                <table
+                                    class="min-w-full text-left text-sm font-light text-white bg-gray-800 dark:bg-gray-900">
+                                    <thead class="border-b border-white dark:border-gray-700">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-4">ID</th>
+                                            <th scope="col" class="px-6 py-4">Nombre</th>
+                                            <th scope="col" class="px-6 py-4">Descripcion</th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody
+                                        class="bg-gray-800 divide-y divide-gray-200 dark:bg-gray-900 dark:divide-gray-700">
+                                        @foreach ($categorias as $categoria)
+                                            <tr class="border-b border-white dark:border-gray-700">
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium text-white">
+                                                    {{ $categoria->id }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4 font-medium text-white">
+                                                    {{ $categoria->nombre }}</td>
+                                                <td class="whitespace-nowrap px-6 py-4 text-white">
+                                                    {{ $categoria->descripcion }}</td>                                                
+                                                <td class="whitespace-nowrap px-6 py-4 text-white">
+                                                    <div class="flex space-x-2">
+                                                        <a href="{{ route('categorias.show', $categoria) }}"
+                                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver</a>
+                                                        <a href="{{ route('categorias.edit', $categoria) }}"
+                                                            class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
+                                                        <form action="{{ route('categorias.destroy', $categoria) }}"
+                                                            method="POST"
+                                                            onsubmit="return confirm('¿Está seguro de que desea eliminar esta categoria?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

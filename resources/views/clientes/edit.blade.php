@@ -1,40 +1,38 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Clientes') }}
+            {{ __('Editar Cliente') }}
         </h2>
     </x-slot>
-    <form action="{{ route('clientes.store') }}" method="POST">
+
+    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="h-screen w-full">
             <div class="bg-gray-800 mx-auto max-w-6xl mt-12">
                 <div class="p-6">
                     <p class="text-5xl text-yellow-500 font-bold">
-                        Registrar<br />
+                        Editar<br />
                         Cliente
                     </p>
                 </div>
                 <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <input placeholder="Número de cédula" name="cedula"
-                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
-                            type="text" />
+                        <input placeholder="Número de cédula" name="cedula" value="{{ $cliente->cedula }}"
+                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <input placeholder="Nombre" name="nombre"
-                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
-                            type="text" />
+                        <input placeholder="Nombre" name="nombre" value="{{ $cliente->nombre }}"
+                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <input placeholder="Apellidos" name="apellido"
-                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
-                            type="text" />
+                        <input placeholder="Apellidos" name="apellido" value="{{ $cliente->apellido }}"
+                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <input placeholder="Email" name="email"
-                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang"
-                            type="email" />
+                        <input placeholder="Email" name="email" value="{{ $cliente->email }}"
+                            class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="email" />
                     </div>
                 </div>
                 <div class="flex justify-center space-x-4 p-4">
@@ -54,4 +52,3 @@
         </div>
     </form>
 </x-app-layout>
-
