@@ -1,11 +1,14 @@
 <x-guest-layout>
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+        
+        <div class="flex justify-center items-center h-24 mb-8"> 
+            <p class="text-green-600 text-5xl font-medium mb-1"
+                style="background: linear-gradient(45deg, #5c5656, #a91717); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Recuperar Contraseña</p>
+        </div>
 
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('¿Olvidaste tu contraseña? Ningún problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña que le permitirá elegir una nueva.') }}
         </div>
 
         @session('status')
@@ -20,13 +23,13 @@
             @csrf
 
             <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" value="{{ __('Correo Electrónico') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Email Password Reset Link') }}
+                    {{ __('Restablecer contraseña de correo electrónico') }}
                 </x-button>
             </div>
         </form>

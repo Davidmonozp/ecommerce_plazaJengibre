@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-4xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Plaza Jengibre') }}
         </h2>
 
@@ -17,7 +17,7 @@
             </svg>
         </button>
 
-        <aside id="logo-sidebar"
+      <aside id="logo-sidebar"
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
             aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -104,29 +104,37 @@
 
                 </ul>
             </div>
-        </aside>
+        </aside> 
 
         <div class="grid grid-cols-3 gap-4">
-            <div class="flex justify-center mb-4">
+            <div class="relative w-full aspect-w-4 aspect-h-3"><br><br>
+                <p class="absolute top-0 left-0 px-2 py-1 rounded-lg" style="background-image: linear-gradient(45deg, #175a44c3, #0cf5c6); color: white;">Dátiles</p>
 
                 <img src="https://cdn0.ecologiaverde.com/es/posts/1/6/3/datiles_propiedades_beneficios_y_contraindicaciones_4361_600.jpg"
-                    class="h-80 w-auto rounded-lg shadow-4-strong" alt="Hollywood Sign on The Hill" />
+                    class="object-cover rounded-lg shadow-4-strong" alt="Dátiles" />
+               
             </div>
-            <div class="flex justify-center mb-4">
-                <img src="https://aprende.com/wp-content/uploads/2022/02/7-beneficios-de-los-frutos-secos-infografia.jpg"
-                    class="h-90 w-auto rounded-lg shadow-4-strong" alt="Five Lands National Park" />
+            <div class="relative w-full aspect-w-4 aspect-h-3"><br><br>
+                <p class="absolute top-0 left-0 px-2 py-1 rounded-lg" style="background-image: linear-gradient(45deg, #175a44c3, #0cf5c6); color: white;">Frutos Secos</p>
+                <img src="https://www.elpais.com.co/resizer/v2/XZSJ2IV7WZD2HF3OHC7FBFWE64.jpg?auth=e7b916b43cf5d5b102268ca9f464ec99f566e65ada3a3c5e12aed13116d0dadb&smart=true&quality=75&width=1280&fitfill=false"
+                    class="object-cover rounded-lg shadow-4-strong" alt="Parque Nacional de Cinco Tierras" />
+                
             </div>
-            <div class="flex justify-center mb-4">
+            <div class="relative w-full aspect-w-4 aspect-h-3"><br><br>
+                <p class="absolute top-0 left-0 px-2 py-1 rounded-lg" style="background-image: linear-gradient(45deg, #175a44c3, #0cf5c6); color: white;">Cacao</p>
                 <img src="https://ipsmisiones.com.ar/wp-content/uploads/2022/02/IMG-20220219-WA0043.jpg"
-                    class="h-80 w-auto rounded-lg shadow-4-strong" alt="Los Angeles Skyscrapers" />
+                    class="object-cover rounded-lg shadow-4-strong" alt="Rascacielos de Los Ángeles" />
+                
             </div>
         </div>
+        
 
 
 
-        </div>
-        </div>
-        </div>
+
+
+
+
 
     </x-slot>
     <div class="py-12">

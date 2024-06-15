@@ -1,12 +1,22 @@
 <x-guest-layout>
+    
     <div class="min-h-screen flex items-center justify-center"
         style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
+
+        
         <x-authentication-card>
+            <div class="flex justify-center mb-4">
+                <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #0c0d0d, #55564b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Registrarse</p>
+            </div>  
+            
             <x-slot name="logo">
                 <x-authentication-card-logo />
+               
             </x-slot>
+            
 
             <x-validation-errors class="mb-4" />
+           
             <div class="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -23,7 +33,7 @@
 
                     <div>
                         <label for="email" value="{{ __('Email') }}" class="block text-sm font-medium text-white">
-                            Email
+                            Correo Electrónico
                         </label>
                         <div class="mt-1">
                             <input id="email" class="block mt-1 w-full" type="email" name="email"
@@ -33,7 +43,7 @@
 
                     <div>
                         <label for="password" value="{{ __('Password') }}" class="block text-sm font-medium text-white">
-                            Password
+                            Contraseña
                         </label>
                         <div class="mt-1">
                             <input id="password" class="block mt-1 w-full" type="password" name="password" required
@@ -43,7 +53,7 @@
 
                     <div>
                         <label for="password_confirmation" value="{{ __('Confirm Password') }}" class="block text-sm font-medium text-white">
-                            Confirm Password
+                            Confirmar Contraseña
                         </label>
                         <div class="mt-1">
                             <input id="password_confirmation" class="block mt-1 w-full" type="password"
@@ -83,11 +93,11 @@
                     <div class="flex items-center justify-end mt-4">
                         <a class="underline text-sm text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                             href="{{ route('login') }}">
-                            {{ __('Already registered?') }}
+                            {{ __('¿Ya esta registrado?') }}
                         </a>
 
                         <x-button class="ms-4">
-                            {{ __('Register') }}
+                            {{ __('Registrar') }}
                         </x-button>
                     </div>
                 </form>

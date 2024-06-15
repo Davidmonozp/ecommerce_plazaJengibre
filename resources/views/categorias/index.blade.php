@@ -16,17 +16,23 @@
                 </path>
             </svg>
         </button>
+    </x-slot>
 
-        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <aside id="logo-sidebar"
+            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+            aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                <a href="{{ route('dashboard') }}"  class="flex items-center ps-2.5 mb-5">
-                    <svg class="h-6 me-3 sm:h-7 text-slate-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <a href="{{ route('dashboard') }}" class="flex items-center ps-2.5 mb-5">
+                    <svg class="h-6 me-3 sm:h-7 text-slate-600" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" />
                         <polyline points="5 12 3 12 12 3 21 12 19 12" />
                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                         <rect x="10" y="12" width="4" height="4" />
                     </svg>
-                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Plaza Jengibre</span>
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Plaza
+                        Jengibre</span>
                 </a>
                 <ul class="space-y-2 font-medium">
                     <li class="mb-4">
@@ -68,7 +74,7 @@
                         </a>
                     </li>
                     <li class="mb-4">    
-                        <a href="{{ route('categorias.index') }}"
+                        <a href="{{ route('productos.index') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -99,8 +105,8 @@
 
                 </ul>
             </div>
-        </aside>
-    </x-slot>
+        </aside> 
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -157,14 +163,14 @@
                                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver</a>
                                                         <a href="{{ route('categorias.edit', $categoria) }}"
                                                             class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
-                                                        <form action="{{ route('categorias.destroy', $categoria) }}"
+                                                        <!-- <form action="{{ route('categorias.destroy', $categoria) }}"
                                                             method="POST"
                                                             onsubmit="return confirm('¿Está seguro de que desea eliminar esta categoria?');">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
                                                                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
-                                                        </form>
+                                                        </form> -->
                                                     </div>
                                                 </td>
                                             </tr>

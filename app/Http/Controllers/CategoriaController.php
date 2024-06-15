@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
-
+use App\Models\Producto;
 
 class CategoriaController extends Controller
 {
@@ -20,6 +19,9 @@ class CategoriaController extends Controller
     public function create()
     {
         return view('categorias.create');
+        // $categorias = Categoria::all(); // Obtiene todas las categorías
+
+        // return view('categorias.create', compact('categorias'));
     }
 
 
@@ -70,18 +72,22 @@ class CategoriaController extends Controller
     }
 
 
+    
     public function destroy($id)
     {
         $categoria = Categoria::find($id);
 
+        // Verificar si el perfil existe antes de intentar eliminarlo
         if ($categoria) {
             $categoria->delete();
-            return redirect()->route('categorias.index')->with('success', 'La Categoria se ha eliminado correctamente.');
+            return redirect()->route('categorias.index')->with('success', 'Producto eliminado correctamente.');
         } else {
 
-            return redirect()->route('categorias.index')->with('error', 'La Categoria no se ha encontrado.');
+            return redirect()->route('categorias.index')->with('error', 'Producto no encontrado.');
         }
     }
+    
+       
 
    
     public function buscarCategoria(Request $request)

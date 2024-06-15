@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('descripcion');
-            $table->foreignId('id_categoria')->constrained('categorias');
-            $table->decimal('precio', 8, 2); 
+            $table->foreignId('id_categoria')->nullable()->constrained('categorias');
+            $table->decimal('precio', 8, 2);
+            $table->string('tamaño');
             $table->timestamps();
         });
+        
     }
 
     /**

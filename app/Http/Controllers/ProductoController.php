@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -18,35 +19,40 @@ class ProductoController extends Controller
     
     public function create()
     {
-        return view('productos.create');
-    }
+        $categorias = Categoria::all(); // Obtener todas las categorías
 
-   
+        return view('productos.create', compact('categorias'));
+    }
     public function store(Request $request)
     {
-        {
-            // Validar los datos
-            $validacion = $request->validate([
-
-                'nombre' => 'required|string|max:255',
-                'descripcion' => 'required|string',
-                'id_categoria' => 'required|numeric',
-                'precio' => 'required|numeric'
-            ]);
-
-            // Crear una nueva instancia del modelo Cliente y asignar los valores
-            $producto = new Producto;
-            $producto->nombre = $request->nombre;
-            $producto->descripcion = $request->descripcion;
-            $producto->id_categoria = $request->id_categoria;
-            $producto->precio = $request->precio;
-            $producto->save();
-
-            // Redirigir a la ruta 'clientes' con un mensaje de éxito
+        // Validar los datos
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'id_categoria' => 'required|exists:categorias,id',
+            'precio' => 'required|numeric',
+            'tamaño' => 'required|string',
+        ]);
+    
+        // Crear una nueva instancia del modelo Producto y asignar los valores
+        $producto = new Producto;
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        // $producto->id_categoria = $request->id_categoria;
+        $producto->precio = $request->precio;
+        $producto->tamaño = $request->tamaño;
+    
+        // Intentar guardar el producto y verificar si se guarda correctamente
+        if ($producto->save()) {
+            // Éxito al guardar el producto
             return redirect()->route('productos.index')->with('success', 'Producto creado correctamente');
+        } else {
+            // Manejo de errores, si es necesario
+            return back()->withInput()->withErrors('Error al guardar el producto');
         }
     }
-
+    
+    
    
     public function show( $id): View
     {
@@ -55,35 +61,39 @@ class ProductoController extends Controller
     }
 
     
-    public function edit(Producto $producto)
+    public function edit($id)
     {
-        return view('productos.edit', compact('producto'));
+        // return view('productos.edit', compact('producto'));
+        $producto = Producto::findOrFail($id);
+    $categorias = Categoria::all(); // Obtener todas las categorías disponibles
+
+    return view('productos.edit', compact('producto', 'categorias'));
     }
 
-    
     public function update(Request $request, Producto $producto)
     {
+        // Validar los datos del formulario
         $validacion = $request->validate([
-            
             'nombre' => 'required|string|max:255',
             'descripcion' => 'required|string',
-            'id_categoria' => 'required|numeric',
-            'precio' => 'required|numeric'
+            // 'id_categoria' => 'required|exists:categorias,id', // Verificar que la categoría exista en la tabla 'categorias'
+            'precio' => 'required|numeric',
+            // 'tamaño' => 'required|integer', // Asegurarse de que sea un número entero
         ]);
     
-        // Actualizar los datos del cliente
+        // Actualizar los datos del producto
         $producto->update([
-          
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
-            'id_categoria' => $request->id_categoria,
+            // 'id_categoria' => $request->id_categoria,
             'precio' => $request->precio,
-            
+            // 'tamaño' => $request->tamaño,
         ]);
     
-        // Redirigir a la ruta 'clientes.index' con un mensaje de éxito
+        // Redirigir de vuelta a la vista de productos con un mensaje de éxito
         return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente');
     }
+    
 
     
     public function destroy($id)

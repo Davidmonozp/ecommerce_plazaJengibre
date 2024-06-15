@@ -3,7 +3,7 @@
     <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
             <div class="flex justify-center mb-4">
-                <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #e6e8e8, #cae80a); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Inicio de esión</p>
+                <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #e6e8e8, #cae80a); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Inicio de Sesión</p>
             </div>  
        
             <x-validation-errors class="mb-4" />
