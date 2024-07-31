@@ -9,11 +9,14 @@ use App\Models\Producto;
 
 class CategoriaController extends Controller
 {
+   
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::paginate(5); // Pagina los resultados, mostrando 5 registros por página
+    
         return view('categorias.index', compact('categorias'));
     }
+    
 
 
     public function create()

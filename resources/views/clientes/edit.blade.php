@@ -19,18 +19,22 @@
                 </div>
                 <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Número de cédula </label>
                         <input placeholder="Número de cédula" name="cedula" value="{{ $cliente->cedula }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Nombre(s) </label>
                         <input placeholder="Nombre" name="nombre" value="{{ $cliente->nombre }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Apellidos </label>
                         <input placeholder="Apellidos" name="apellido" value="{{ $cliente->apellido }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Email </label>
                         <input placeholder="Email" name="email" value="{{ $cliente->email }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="email" />
                     </div>

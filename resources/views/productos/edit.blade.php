@@ -19,10 +19,12 @@
                 </div>
                 <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Nombre del producto</label>
                         <input placeholder="Nombre del producto" name="nombre" value="{{ $producto->nombre }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Descripción del producto</label>
                         <input placeholder="Descripcion" name="descripcion" value="{{ $producto->descripcion }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
@@ -35,6 +37,7 @@
                         </select>
                     </div> -->
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Precio del producto</label>
                         <input placeholder="Precio" name="precio" value="{{ $producto->precio }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="number" />
                     </div>

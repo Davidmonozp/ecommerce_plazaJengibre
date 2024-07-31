@@ -11,9 +11,10 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::paginate(5); // Cambiado a paginate con 5 elementos por página
         return view('clientes.index', compact('clientes'));
     }
+    
 
 
     public function create()

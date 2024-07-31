@@ -5,7 +5,7 @@
 
         
         <x-authentication-card>
-            <div class="flex justify-center mb-4">
+        <div class="flex justify-center mb-4">
                 <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #0c0d0d, #55564b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Registrarse</p>
             </div>  
             
@@ -22,7 +22,7 @@
                     @csrf
 
                     <div>
-                        <label for="name" value="{{ __('Name') }}" class="block text-sm font-medium text-white">
+                        <label for="name" value="{{ __('Name') }}" class="block text-xl font-medium text-white">
                             Nombre
                         </label>
                         <div class="mt-1">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div>
-                        <label for="email" value="{{ __('Email') }}" class="block text-sm font-medium text-white">
+                        <label for="email" value="{{ __('Email') }}" class="block text-xl font-medium text-white">
                             Correo Electrónico
                         </label>
                         <div class="mt-1">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div>
-                        <label for="password" value="{{ __('Password') }}" class="block text-sm font-medium text-white">
+                        <label for="password" value="{{ __('Password') }}" class="block text-xl font-medium text-white">
                             Contraseña
                         </label>
                         <div class="mt-1">
@@ -52,7 +52,7 @@
                     </div>
 
                     <div>
-                        <label for="password_confirmation" value="{{ __('Confirm Password') }}" class="block text-sm font-medium text-white">
+                        <label for="password_confirmation" value="{{ __('Confirm Password') }}" class="block text-xl font-medium text-white">
                             Confirmar Contraseña
                         </label>
                         <div class="mt-1">
@@ -91,7 +91,7 @@
                     @endif
 
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-sm text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                        <a class="underline text-lg text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                             href="{{ route('login') }}">
                             {{ __('¿Ya esta registrado?') }}
                         </a>

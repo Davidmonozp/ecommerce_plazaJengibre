@@ -19,10 +19,12 @@
                 </div>
                 <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Nombre de la Categoria</label>
                         <input placeholder="Nombre de la categoria" name="nombre" value="{{ $categoria->nombre }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
+                    <label for="nombre" class="text-yellow-500">Descripción de la Categoria</label>
                         <input placeholder="Descripcion" name="descripcion" value="{{ $categoria->descripcion }}"
                             class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
                     

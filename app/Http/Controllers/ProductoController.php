@@ -12,9 +12,10 @@ class ProductoController extends Controller
     
     public function index()
     {
-        $productos = Producto::all();
+        $productos = Producto::paginate(5); // Paginación con 1 item por página
         return view('productos.index', compact('productos'));
     }
+    
 
     
     public function create()
