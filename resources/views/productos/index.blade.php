@@ -10,11 +10,15 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex items-center justify-between px-6 py-4">
                     <h3 class="font-bold text-3xl">Productos</h3>
+
+                    @role('administrador')
                     <a href="{{ route('productos.create') }}">
                         <button type="button" class="inline-block rounded bg-green-500 px-6 py-2.5 text-xl font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-green-600 hover:shadow-md focus:bg-green-600 focus:shadow-md focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-md motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                             Crear Producto
                         </button>
                     </a>
+                    @endrole
+
                     <form action="{{ route('buscar.producto') }}" method="GET" class="flex items-center">
                         <input type="text" name="nombre" class="px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Nombre del Producto" required>
                         <button type="submit" class="ml-2 inline-block bg-blue-500 px-6 py-2.5 text-xl font-medium uppercase text-white rounded-md shadow-md transition duration-150 ease-in-out hover:bg-blue-600 focus:bg-blue-600 focus:outline-none focus:shadow-md active:bg-green-700">
@@ -45,18 +49,22 @@
                                         <td class="px-6 py-4 text-white">
                                             <div class="whitespace-pre-wrap">{{ $producto->descripcion }}</div>
                                         </td>
-                                        <td class="px-6 py-4 text-white">{{ $producto->nombre }}</td>
+                                        <td class="px-6 py-4 text-white">{{ $producto->categoria->nombre ?? 'Categoría no asignada' }}</td>
                                         <td class="px-6 py-4 text-white">{{ $producto->precio }}</td>
                                         <td class="px-6 py-4 text-white">{{ $producto->tamaño }}</td>
                                         <td class="px-6 py-4 text-white">
                                             <div class="flex space-x-2">
                                                 <a href="{{ route('productos.show', $producto) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver</a>
+
+                                                @role('administrador')
                                                 <a href="{{ route('productos.edit', $producto) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
                                                 <form action="{{ route('productos.destroy', $producto) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este producto?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
                                                 </form>
+                                                @endrole 
+                                                
                                             </div>
                                         </td>
                                     </tr>

@@ -1,22 +1,21 @@
 <x-guest-layout>
-    
-    <div class="min-h-screen flex items-center justify-center"
-        style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
 
-        
+    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
+
+
         <x-authentication-card>
-        <div class="flex justify-center mb-4">
+            <div class="flex justify-center mb-4">
                 <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #0c0d0d, #55564b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Registrarse</p>
-            </div>  
-            
-            <x-slot name="logo">
+            </div>
+
+            <!-- <x-slot name="logo">
                 <x-authentication-card-logo />
                
-            </x-slot>
-            
+            </x-slot> -->
+
 
             <x-validation-errors class="mb-4" />
-           
+
             <div class="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -26,8 +25,7 @@
                             Nombre
                         </label>
                         <div class="mt-1">
-                            <input id="name" class="block mt-1 w-full" type="text" name="name"
-                                :value="old('name')" required autofocus autocomplete="name">
+                            <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
                         </div>
                     </div>
 
@@ -36,8 +34,7 @@
                             Correo Electrónico
                         </label>
                         <div class="mt-1">
-                            <input id="email" class="block mt-1 w-full" type="email" name="email"
-                                :value="old('email')" required autocomplete="username">
+                            <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username">
                         </div>
                     </div>
 
@@ -46,8 +43,7 @@
                             Contraseña
                         </label>
                         <div class="mt-1">
-                            <input id="password" class="block mt-1 w-full" type="password" name="password" required
-                            autocomplete="new-password">
+                            <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password">
                         </div>
                     </div>
 
@@ -56,43 +52,41 @@
                             Confirmar Contraseña
                         </label>
                         <div class="mt-1">
-                            <input id="password_confirmation" class="block mt-1 w-full" type="password"
-                            name="password_confirmation" required autocomplete="new-password">
+                            <input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password">
                         </div>
-                    </div>                  
+                    </div>
 
-                    
+
 
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                        <div class="mt-4">
-                            <x-label for="terms">
-                                <div class="flex items-center">
-                                    <x-checkbox name="terms" id="terms" required />
+                    <div class="mt-4">
+                        <x-label for="terms">
+                            <div class="flex items-center">
+                                <x-checkbox name="terms" id="terms" required />
 
-                                    <div class="ms-2">
-                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' =>
-                                                '<a target="_blank" href="' .
+                                <div class="ms-2">
+                                    {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                    'terms_of_service' =>
+                                    '<a target="_blank" href="' .
                                                 route('terms.show') .
                                                 '" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">' .
-                                                __('Terms of Service') .
-                                                '</a>',
-                                            'privacy_policy' =>
-                                                '<a target="_blank" href="' .
+                                        __('Terms of Service') .
+                                        '</a>',
+                                    'privacy_policy' =>
+                                    '<a target="_blank" href="' .
                                                 route('policy.show') .
                                                 '" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">' .
-                                                __('Privacy Policy') .
-                                                '</a>',
-                                        ]) !!}
-                                    </div>
+                                        __('Privacy Policy') .
+                                        '</a>',
+                                    ]) !!}
                                 </div>
-                            </x-label>
-                        </div>
+                            </div>
+                        </x-label>
+                    </div>
                     @endif
 
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-lg text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                            href="{{ route('login') }}">
+                        <a class="underline text-lg text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                             {{ __('¿Ya esta registrado?') }}
                         </a>
 

@@ -9,10 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-6 text-gray-300 text-2xl">
                 <div class="flex flex-col space-y-6"> <!-- Aumenté el espacio vertical entre elementos a space-y-6 -->
+                    @role('administrador')
                     <div class="flex items-center space-x-4">
                         <span class="font-semibold">ID:</span>
                         <span>{{ $producto->id }}</span>
                     </div>
+                    @endrole
                     <div class="flex items-center space-x-4">
                         <span class="font-semibold">Nombre:</span>
                         <span>{{ $producto->nombre }}</span>
@@ -23,7 +25,7 @@
                     </div>
                     <div class="flex items-center space-x-4">
                         <span class="font-semibold">Categoría:</span>
-                        <span>{{ $producto->categoria->nombre }}</span>
+                        <span>{{ $producto->categoria->nombre ?? 'Categoría no disponible' }}</span>
                     </div>
                     <div class="flex items-center space-x-4">
                         <span class="font-semibold">Precio:</span>

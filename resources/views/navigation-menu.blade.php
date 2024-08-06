@@ -22,6 +22,8 @@
                         <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
                     </a>
                 </li>
+
+                @role('administrador')
                 <li class="mb-4">
                     <a href="{{ route('clientes.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -30,6 +32,7 @@
                         <span class="flex-1 ms-5 text-xl whitespace-nowrap">Clientes</span>
                     </a>
                 </li>
+                @endrole
 
 
                 <li class="mb-4">
@@ -99,11 +102,14 @@
                     </x-nav-link>
                 </div>
 
+                @role('administrador')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('clientes.index') }}" :active="request()->routeIs('clientes.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
                         {{ __('Clientes') }}
                     </x-nav-link>
                 </div>
+                @endrole
+                
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">

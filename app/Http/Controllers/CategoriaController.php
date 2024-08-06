@@ -12,8 +12,8 @@ class CategoriaController extends Controller
    
     public function index()
     {
-        $categorias = Categoria::paginate(5); // Pagina los resultados, mostrando 5 registros por página
-    
+        $categorias = Categoria::orderBy('nombre')->paginate(5); // Pagina los resultados, mostrando 5 registros por página
+
         return view('categorias.index', compact('categorias'));
     }
     
