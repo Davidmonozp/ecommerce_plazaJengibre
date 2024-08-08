@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form action="{{ route('productos.update', $producto->id) }}" method="POST">
+    <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -20,13 +20,12 @@
                 <div class="mx-12 p-3 rounded-xl shadow-sm bg-gray-900">
                     <div class="p-3 mx-6 border-b border-gray-500">
                         <label for="nombre" class="text-yellow-500">Nombre del producto</label>
-                        <input placeholder="Nombre del producto" name="nombre" value="{{ $producto->nombre }}" class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
+                        <input placeholder="Nombre del producto" name="nombre" value="{{ $producto->nombre }}" class="bg-transparent text-yellow-500 w-full focus:outline-none" type="text" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <label for="nombre" class="text-yellow-500">Descripción del producto</label>
-                        <input placeholder="Descripcion" name="descripcion" value="{{ $producto->descripcion }}" class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="text" />
+                        <label for="descripcion" class="text-yellow-500">Descripción del producto</label>
+                        <input placeholder="Descripción" name="descripcion" value="{{ $producto->descripcion }}" class="bg-transparent text-yellow-500 w-full focus:outline-none" type="text" />
                     </div>
-
 
                     <div class="p-3 mx-6 border-b border-gray-500">
                         <label for="id_categoria" class="text-yellow-500">Categoría del producto</label>
@@ -40,10 +39,9 @@
                         </select>
                     </div>
 
-
                     <div class="p-3 mx-6 border-b border-gray-500">
-                        <label for="nombre" class="text-yellow-500">Precio del producto</label>
-                        <input placeholder="Precio" name="precio" value="{{ $producto->precio }}" class="bg-transparent text-yellow-500 w-full focus:outline-none focus:rang" type="number" />
+                        <label for="precio" class="text-yellow-500">Precio del producto</label>
+                        <input placeholder="Precio" name="precio" value="{{ $producto->precio }}" class="bg-transparent text-yellow-500 w-full focus:outline-none" type="number" />
                     </div>
                     <div class="p-3 mx-6 border-b border-gray-500">
                         <label for="tamaño" class="text-yellow-500">Tamaño del producto</label>
@@ -57,6 +55,17 @@
                             <option value="500g" {{ $producto->tamaño == '500g' ? 'selected' : '' }}>500g</option>
                             <option value="600g" {{ $producto->tamaño == '600g' ? 'selected' : '' }}>600g</option>
                         </select>
+                    </div>
+
+                    <!-- Nuevo campo para la imagen -->
+                    <div class="p-3 mx-6 border-b border-gray-500">
+                        <label for="imagen" class="text-yellow-500">Imagen del producto</label>
+                        @if($producto->imagen)
+                            <div class="mb-2">
+                                <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto" class="w-48 h-auto object-cover rounded-lg shadow-lg">
+                            </div>
+                        @endif
+                        <input type="file" name="imagen" class="bg-transparent text-yellow-500 w-full focus:outline-none" />
                     </div>
                 </div>
                 <div class="flex justify-center space-x-4 p-4">
@@ -72,4 +81,5 @@
             </div>
         </div>
     </form>
+
 </x-app-layout>

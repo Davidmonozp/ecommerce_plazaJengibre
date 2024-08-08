@@ -9,10 +9,11 @@
                     <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                     <rect x="10" y="12" width="4" height="4" />
                 </svg>
+        
                 <span class="self-center">Plaza Jengibre</span>
             </a>
 
-            <ul class="space-y-2 font-medium">
+            <ul class="space-y-2 font-medium animate__animated animate__bounceInLeft">
                 <li class="mb-4">
                     <a href="#" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -52,6 +53,15 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Categorias</span>
                     </a>
                 </li>
+                <li class="mb-4">
+                    <a href="{{ route('inventario.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+
+                        <span class="flex-1 ms-3 whitespace-nowrap">Inventarios</span>
+                    </a>
+                </li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <li class="mb-4">
@@ -76,12 +86,9 @@
 
 
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate__animated animate__bounceInLeft">
         <div class="flex justify-between h-16">
             <div class="flex">
-
-
-
                 <!-- Logo -->
 
                 <div class="flex items-center">
@@ -109,7 +116,7 @@
                     </x-nav-link>
                 </div>
                 @endrole
-                
+
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('productos.index') }}" :active="request()->routeIs('productos.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
@@ -123,9 +130,15 @@
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('inventario.index') }}" :active="request()->routeIs('categorias.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+                        {{ __('Inventarios') }}
+                    </x-nav-link>
+                </div>
 
 
-                <div class="hidden sm:flex sm:items-center sm:ms-6">
+
+                <div class="hidden sm:flex sm:items-center sm:justify-end sm:ms-6">
                     <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
