@@ -52,11 +52,25 @@
                             </div>
                             <div class="flex items-center space-x-4">
                                 <span class="font-semibold text-xl">Cantidad en Inventario:</span>
-                                <span class="text-lg">{{ $producto->cantidadEnInventario() }}</span>
+                                <span class="text-lg">{{ $producto->cantidad_disponible }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Verificación de disponibilidad y formulario de agregar al carrito -->
+                @if($producto->cantidad_disponible <= 0)
+                    <p class="text-red-500 mt-6">No hay unidades disponibles de este producto.</p>
+                @else
+                    <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-6">
+                        @csrf
+                        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+                        <div class="flex items-center space-x-4">
+                            <input type="number" name="cantidad" min="1" max="{{ $producto->cantidad_disponible }}" value="1" class="w-24 p-2 border border-gray-300 rounded">
+                            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Agregar al Carrito</button>
+                        </div>
+                    </form>
+                @endif
 
                 <!-- Botones de acción -->
                 <div class="flex space-x-4 mt-6">
@@ -81,3 +95,6 @@
         </div>
     </div>
 </x-app-layout>
+
+
+

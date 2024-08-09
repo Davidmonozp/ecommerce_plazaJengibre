@@ -31,6 +31,17 @@
                         </form>
                     </div>
 
+                    <!-- Mostrar mensajes de error si los hay -->
+                    @if ($errors->any())
+                    <div class="bg-red-500 text-white p-4 rounded-md mb-4">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <div class="overflow-x-auto px-4 py-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($productos as $producto)
@@ -53,6 +64,7 @@
                                         @endrole
                                     </div>
                                     @role('administrador')
+
                                     <div class="mt-4">
                                         <form action="{{ route('productos.destroy', $producto) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este producto?');">
                                             @csrf
@@ -60,6 +72,18 @@
                                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">Eliminar</button>
                                         </form>
                                     </div>
+                                    <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-4 flex items-center space-x-2">
+                                        @csrf
+                                        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+
+                                        <label for="cantidad" class="text-sm text-gray-300">Cantidad:</label>
+                                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" class="border border-gray-300 rounded px-2 py-1 text-sm w-16">
+
+                                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-1 px-3 rounded text-sm">
+                                            Agregar
+                                        </button>
+                                    </form>
+
                                     @endrole
                                 </div>
                             </div>

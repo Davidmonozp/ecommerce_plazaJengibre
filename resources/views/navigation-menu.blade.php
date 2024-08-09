@@ -9,24 +9,13 @@
                     <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                     <rect x="10" y="12" width="4" height="4" />
                 </svg>
-        
                 <span class="self-center">Plaza Jengibre</span>
             </a>
 
             <ul class="space-y-2 font-medium animate__animated animate__bounceInLeft">
-                <li class="mb-4">
-                    <a href="#" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Mensajes</span>
-                        <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                    </a>
-                </li>
-
                 @role('administrador')
                 <li class="mb-4">
-                    <a href="{{ route('clientes.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="{{ route('clientes.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('clientes.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
                         </svg>
@@ -35,37 +24,63 @@
                 </li>
                 @endrole
 
-
+                <!-- Productos -->
                 <li class="mb-4">
-                    <a href="{{ route('productos.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="{{ route('productos.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('productos.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
                         </svg>
                         <span class="flex-1 ms-3 whitespace-nowrap">Productos</span>
                     </a>
                 </li>
+                <!-- Categorias -->
                 <li class="mb-4">
-                    <a href="{{ route('categorias.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="{{ route('categorias.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('categorias.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>
-
                         <span class="flex-1 ms-3 whitespace-nowrap">Categorias</span>
                     </a>
                 </li>
+                <!-- Inventarios -->
                 <li class="mb-4">
-                    <a href="{{ route('inventario.index') }}" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    <a href="{{ route('inventario.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('inventario.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
+                        <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v16a1 1 0 001 1h18a1 1 0 001-1V4a1 1 0 00-1-1H3zM3 2h18a2 2 0 012 2v16a2 2 0 01-2 2H3a2 2 0 01-2-2V4a2 2 0 012-2zm4 4h10v2H7V6zm0 4h10v2H7v-2zm0 4h10v2H7v-2zm-4-6h2v2H3v-2zm0 4h2v2H3v-2zm0 4h2v2H3v-2z" clip-rule="evenodd" />
                         </svg>
-
                         <span class="flex-1 ms-3 whitespace-nowrap">Inventarios</span>
                     </a>
                 </li>
+                <!-- Carrito -->
+                <li class="mb-4">
+                    <a href="{{ route('carrito.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('carrito.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
+                        <i class="fas fa-shopping-cart fa-xl text-gray-700 mr-2 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        @if(session()->has('carrito'))
+                        @php
+                        $cart = session()->get('carrito', []);
+                        $itemCount = array_sum(array_column($cart, 'cantidad'));
+                        @endphp
+                        <span class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">{{ $itemCount }}</span>
+                        @endif
+                        <span class="flex-1 ms-3 whitespace-nowrap">Carrito</span>
+                    </a>
+                </li>
+
+                <!-- Pedidos -->
+                <li class="mb-4">
+                    <a href="{{ route('orders.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('orders.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
+                        <i class="fas fa-file-invoice-dollar fa-xl text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Pedidos</span>
+                    </a>
+                </li>
+
+
+
+                <!-- Cerrar Sesión -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <li class="mb-4">
-                        <button type="submit" class="flex items-center p-4 text-xl text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <button type="submit" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                                 <path fill-rule="evenodd" d="M5.293 4.293a1 1 0 011.414 0L10 8.586l3.293-3.293a1 1 0 111.414 1.414L11.414 10l3.293 3.293a1 1 0 01-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 01-1.414-1.414L8.586 10 5.293 6.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
@@ -73,12 +88,10 @@
                         </button>
                     </li>
                 </form>
-
-
-
             </ul>
         </div>
     </aside>
+
 
 
 
@@ -131,10 +144,33 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('inventario.index') }}" :active="request()->routeIs('categorias.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+                    <x-nav-link href="{{ route('inventario.index') }}" :active="request()->routeIs('inventario.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
                         {{ __('Inventarios') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('carrito.index') }}" :active="request()->routeIs('carrito.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 flex items-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> <!-- Ícono de carrito de compras -->
+
+                        @if(session()->has('carrito'))
+                        @php
+                        $cart = session()->get('carrito', []);
+                        $itemCount = array_sum(array_column($cart, 'cantidad'));
+                        @endphp
+                        <span class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">{{ $itemCount }}</span>
+                        @endif
+                    </x-nav-link>
+                </div>
+
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
+                        {{ __('Pedidos') }}
+                    </x-nav-link>
+                </div>
+
+
 
 
 
