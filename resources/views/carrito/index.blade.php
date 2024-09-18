@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 animate__animated animate__flipInY">
         <div class="flex">
             <div class="w-64 hidden lg:block bg-gray-200 dark:bg-gray-700"></div>
 
@@ -22,7 +22,7 @@
                             <div class="flex items-center justify-between bg-gray-100 dark:bg-gray-900 rounded-lg p-4 shadow-md">
                                 <div class="flex items-center space-x-4">
                                     <div class="w-24 h-24 flex-shrink-0">
-                                    <img src="{{ asset('storage/' . $item['imagen']) }}" alt="Imagen del producto" class="w-full h-full object-cover rounded-lg">
+                                        <img src="{{ asset('storage/' . $item['imagen']) }}" alt="Imagen del producto" class="w-full h-full object-cover rounded-lg">
 
 
                                     </div>
@@ -47,15 +47,17 @@
                         <div class="mt-6 p-4 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Resumen del Carrito</h3>
                             <div class="flex justify-between mt-2">
-                                <span class="text-gray-600 dark:text-gray-400">Total Items:</span>
-                                <span class="font-semibold">{{ count($carrito) }}</span>
+                                <span class="text-gray-600 dark:text-gray-400">Total Items: <span class="font-semibold text-gray-900"> {{ count($carrito) }}</span></span>
+
                             </div>
                             <div class="flex justify-between mt-2">
-                                <span class="text-gray-600 dark:text-gray-400">Total:</span>
-                                <span class="font-semibold text-green-600"> $ {{ number_format($total, 2) }} </span>
+                                <span class="text-gray-600 dark:text-gray-400">Total: <span class="font-semibold text-gray-900"> $ {{ number_format($total, 2) }}</span></span>
+
+
                             </div>
                             <a href="{{ route('checkout.index') }}" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Proceder al Pago</a>
                         </div>
+
                     </div>
                     @endif
 

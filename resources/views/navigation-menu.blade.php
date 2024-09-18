@@ -1,15 +1,13 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 ml-4">
 
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-teal-400" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <a href="{{ route('dashboard') }}" class="flex items-center px-3 py-2.5 mb-5 text-xl font-semibold text-slate-600 dark:text-white">
-                <svg class="h-8 w-8 me-3 sm:h-10 sm:w-10" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <polyline points="5 12 3 12 12 3 21 12 19 12" />
-                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                    <rect x="10" y="12" width="4" height="4" />
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                <img src="{{ asset('images/logoplaza.png') }}" alt="" style="width: 215px; height: auto; margin-right: 1px;">
                 </svg>
-                <span class="self-center">Plaza Jengibre</span>
+                <!-- <span class="self-center">Plaza Jengibre</span> -->
             </a>
 
             <ul class="space-y-2 font-medium animate__animated animate__bounceInLeft">
@@ -43,6 +41,7 @@
                     </a>
                 </li>
                 <!-- Inventarios -->
+                @role('administrador')
                 <li class="mb-4">
                     <a href="{{ route('inventario.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('inventario.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
                         <svg class="flex-shrink-0 w-8 h-8 text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -51,6 +50,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Inventarios</span>
                     </a>
                 </li>
+                @endrole
                 <!-- Carrito -->
                 <li class="mb-4">
                     <a href="{{ route('carrito.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('carrito.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
@@ -60,19 +60,24 @@
                         $cart = session()->get('carrito', []);
                         $itemCount = array_sum(array_column($cart, 'cantidad'));
                         @endphp
+                        @if($itemCount > 0)
                         <span class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">{{ $itemCount }}</span>
+                        @endif
                         @endif
                         <span class="flex-1 ms-3 whitespace-nowrap">Carrito</span>
                     </a>
                 </li>
 
+
                 <!-- Pedidos -->
+                @role('administrador')
                 <li class="mb-4">
                     <a href="{{ route('orders.index') }}" class="flex items-center p-4 text-xl rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->routeIs('orders.index') ? 'bg-gray-200 dark:bg-gray-700' : '' }}">
                         <i class="fas fa-file-invoice-dollar fa-xl text-gray-600 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap">Pedidos</span>
                     </a>
                 </li>
+                @endrole
 
 
 
@@ -99,18 +104,17 @@
 
 
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate__animated animate__bounceInLeft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate__animated animate__bounceInLeft" style="margin-bottom: 20px;">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
 
                 <div class="flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center">
-                        <svg class="h-12 w-12 text-slate-600" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <polyline points="5 12 3 12 12 3 21 12 19 12" />
-                            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-                            <rect x="10" y="12" width="4" height="4" />
+                        <img src="{{ asset('images/logoplaza.png') }}" alt="" style="width: 80px; height: auto; margin-right: 1px; margin-top: 20px;">
+                        <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                        <rect x="10" y="12" width="4" height="4" />
                         </svg>
                     </a>
                 </div>
@@ -143,12 +147,13 @@
                     </x-nav-link>
                 </div>
 
+                @role('administrador')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('inventario.index') }}" :active="request()->routeIs('inventario.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
                         {{ __('Inventarios') }}
                     </x-nav-link>
                 </div>
-
+                @endrole
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('carrito.index') }}" :active="request()->routeIs('carrito.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 flex items-center">
                         <i class="fas fa-shopping-cart mr-2"></i> <!-- Ícono de carrito de compras -->
@@ -158,21 +163,21 @@
                         $cart = session()->get('carrito', []);
                         $itemCount = array_sum(array_column($cart, 'cantidad'));
                         @endphp
+                        @if($itemCount > 0)
                         <span class="ml-2 bg-red-500 text-white text-xs rounded-full px-2 py-1">{{ $itemCount }}</span>
+                        @endif
                         @endif
                     </x-nav-link>
                 </div>
 
 
+                @role('administrador')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('orders.index') }}" :active="request()->routeIs('orders.index')" class="text-xl font-semibold text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">
                         {{ __('Pedidos') }}
                     </x-nav-link>
                 </div>
-
-
-
-
+                @endrole
 
                 <div class="hidden sm:flex sm:items-center sm:justify-end sm:ms-6">
                     <!-- Teams Dropdown -->

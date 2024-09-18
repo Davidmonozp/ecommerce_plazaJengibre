@@ -71,4 +71,8 @@ Route::get('orders/search', [OrderController::class, 'searchByIdNumber'])->name(
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 
 
+ 
+
+
+
 

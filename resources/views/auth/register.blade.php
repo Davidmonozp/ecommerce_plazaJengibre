@@ -1,12 +1,18 @@
 <x-guest-layout>
 
-    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
+    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right,  #46f8a1, #058d4b);">
 
 
         <x-authentication-card>
-            <div class="flex justify-center mb-4">
-                <p class="text-white text-5xl font-medium mb-2" style="background: linear-gradient(45deg, #0c0d0d, #55564b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Registrarse</p>
+            <div class="flex flex-col items-center mb-4">
+                <img src="{{ asset('images/logoplaza.png') }}" alt="" style="width: 180px; height: 180px; border-radius: 50%; margin-bottom: 1rem;">
+                <p class="text-white text-5xl font-medium mb-2">
+                    Registrarse
+                </p>
             </div>
+
+
+
 
             <!-- <x-slot name="logo">
                 <x-authentication-card-logo />
@@ -15,7 +21,6 @@
 
 
             <x-validation-errors class="mb-4" />
-
             <div class="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -86,7 +91,7 @@
                     @endif
 
                     <div class="flex items-center justify-end mt-4">
-                        <a class="underline text-lg text-gray-300 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+                        <a class="underline text-lg text-green-300 dark:text-gray-400 hover:text-green-500 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                             {{ __('¿Ya esta registrado?') }}
                         </a>
 

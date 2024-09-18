@@ -22,7 +22,7 @@
                         </form>
                     </div>
 
-                    <div class="overflow-x-auto px-4 py-6">
+                    <div class="overflow-x-auto px-4 py-6 animate__animated animate__flipInY">
                         @if(session('error'))
                         <p class="px-6 py-4 text-center text-lg text-red-500">{{ session('error') }}</p>
                         @endif

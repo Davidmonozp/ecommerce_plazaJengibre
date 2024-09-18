@@ -1,4 +1,5 @@
 <x-app-layout>
+    @role('administrador')
     <x-slot name="header">
         <h2 class="font-semibold text-4xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Plaza Jengibre') }}
@@ -15,22 +16,20 @@
                     <div class="flex items-center justify-between px-6 py-4">
                         <h3 class="font-bold text-5xl">Inventarios</h3>
 
-                        @role('administrador')
                         <a href="{{ route('inventario.create') }}">
                             <button type="button" class="inline-block rounded bg-green-500 px-6 py-2.5 text-xl font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-green-600 hover:shadow-md focus:bg-green-600 focus:shadow-md focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-md motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong">
                                 Crear Inventario
                             </button>
                         </a>
-                        @endrole
                     </div>
 
-                    <div class="overflow-x-auto px-4 py-6">
+                    <div class="overflow-x-auto px-4 py-6 animate__animated animate__flipInY">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead class="bg-gray-800 dark:bg-gray-900">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xl font-medium text-gray-300 uppercase tracking-wider">Producto</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xl font-medium text-gray-300 uppercase tracking-wider">Tamaño</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xl font-medium text-gray-300 uppercase tracking-wider">Cantidad</th>                                    
+                                    <th scope="col" class="px-6 py-3 text-left text-xl font-medium text-gray-300 uppercase tracking-wider">Cantidad</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xl font-medium text-gray-300 uppercase tracking-wider">Acciones</th>
                                 </tr>
                             </thead>
@@ -38,24 +37,26 @@
                                 @foreach ($inventarios as $inventario)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-white">
-                                        {{ $inventario->producto->nombre }}
+                                        {{ $inventario->producto ? $inventario->producto->nombre : 'No disponible' }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-xl text-gray-300">
                                         {{ $inventario->tamaño }}
-                                    </td>                                   
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-xl text-gray-300">
                                         {{ $inventario->cantidad }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-xl font-medium flex space-x-2">
-                                        <a href="{{ route('productos.show', $inventario->producto) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver Producto</a>
-                                        @role('administrador')
+                                        @if ($inventario->producto)
+                                            <a href="{{ route('productos.show', $inventario->producto->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver Producto</a>
+                                        @else
+                                            <span class="text-gray-400">Producto no disponible</span>
+                                        @endif
                                         <a href="{{ route('inventario.edit', $inventario) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
                                         <form action="{{ route('inventario.destroy', $inventario) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este inventario?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
                                         </form>
-                                        @endrole
                                     </td>
                                 </tr>
                                 @endforeach
@@ -98,4 +99,5 @@
             </div>
         </div>
     </div>
+    @endrole
 </x-app-layout>

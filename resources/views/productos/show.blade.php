@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-4xl text-gray-800 dark:text-gray-200 leading-tight">
-             {{ $producto->nombre }}
+            {{ $producto->nombre }}
         </h2>
     </x-slot>
 
@@ -13,11 +13,11 @@
                     <!-- Imagen del producto -->
                     <div class="flex-shrink-0 w-full sm:w-1/3">
                         @if ($producto->imagen)
-                            <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto" class="w-full h-96 object-contain">
+                        <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto" class="w-full h-96 object-contain">
                         @else
-                            <div class="flex items-center justify-center w-full h-96 bg-gray-700">
-                                <span class="text-gray-400">Imagen no disponible</span>
-                            </div>
+                        <div class="flex items-center justify-center w-full h-96 bg-gray-700">
+                            <span class="text-gray-400">Imagen no disponible</span>
+                        </div>
                         @endif
                     </div>
                     <!-- Información del producto -->
@@ -29,7 +29,7 @@
                                 <span>{{ $producto->id }}</span>
                             </div>
                             @endrole
-                            
+
                             <div class="flex items-center space-x-4">
                                 <span class="font-semibold text-xl">Nombre:</span>
                                 <span class="text-lg">{{ $producto->nombre }}</span>
@@ -52,49 +52,51 @@
                             </div>
                             <div class="flex items-center space-x-4">
                                 <span class="font-semibold text-xl">Cantidad en Inventario:</span>
-                                <span class="text-lg">{{ $producto->cantidad_disponible }}</span>
+                                <span class="text-lg">{{ $producto->cantidadEnInventario() }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Verificación de disponibilidad y formulario de agregar al carrito -->
-                @if($producto->cantidad_disponible <= 0)
-                    <p class="text-red-500 mt-6">No hay unidades disponibles de este producto.</p>
-                @else
-                    <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-6">
+                @if( $producto->cantidadEnInventario() <= 0) <p class="text-red-500 mt-6">No hay unidades disponibles de este producto.</p>
+                    @else
+                    <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-4 flex items-center space-x-2">
                         @csrf
                         <input type="hidden" name="producto_id" value="{{ $producto->id }}">
-                        <div class="flex items-center space-x-4">
-                            <input type="number" name="cantidad" min="1" max="{{ $producto->cantidad_disponible }}" value="1" class="w-24 p-2 border border-gray-300 rounded">
-                            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Agregar al Carrito</button>
-                        </div>
-                    </form>
-                @endif
 
-                <!-- Botones de acción -->
-                <div class="flex space-x-4 mt-6">
-                    <a href="{{ route('productos.index') }}" class="inline-block">
-                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg p-3 text-center inline-flex items-center space-x-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0l4-4m-4 4l4 4" />
-                            </svg>
-                            <span class="font-medium">Productos</span>
+                        <label for="cantidad" class="text-sm text-gray-300">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" class="border border-gray-300 rounded px-1 py-1 text-sm w-16" style="color: black;">
+
+
+
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-1 px-3 rounded text-sm">
+                            Agregar
                         </button>
-                    </a>
-                    <a href="{{ route('dashboard') }}" class="inline-block">
-                        <button type="button" class="text-white bg-yellow-500 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-lg p-3 text-center inline-flex items-center space-x-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
-                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 2L2 10h3v7h10v-7h3L10 2z" />
-                            </svg>
-                            <span class="font-medium">Inicio</span>
-                        </button>
-                    </a>
-                </div>
+
+                    </form>
+                    @endif
+
+                    <!-- Botones de acción -->
+                    <div class="flex space-x-4 mt-6">
+                        <a href="{{ route('productos.index') }}" class="inline-block">
+                            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg p-3 text-center inline-flex items-center space-x-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0l4-4m-4 4l4 4" />
+                                </svg>
+                                <span class="font-medium">Productos</span>
+                            </button>
+                        </a>
+                        <a href="{{ route('dashboard') }}" class="inline-block">
+                            <button type="button" class="text-white bg-yellow-500 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-lg p-3 text-center inline-flex items-center space-x-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 2L2 10h3v7h10v-7h3L10 2z" />
+                                </svg>
+                                <span class="font-medium">Inicio</span>
+                            </button>
+                        </a>
+                    </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-
-
-

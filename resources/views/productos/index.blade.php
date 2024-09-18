@@ -45,7 +45,7 @@
                     <div class="overflow-x-auto px-4 py-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             @foreach ($productos as $producto)
-                            <div class="bg-gray-800 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg animate__animated animate__zoomInLeft flex flex-col">
+                            <div class="bg-gray-800 dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg animate__animated animate__jello flex flex-col">
                                 <!-- Contenedor de Imagen con ajuste al centro -->
                                 <div class="w-full h-48 flex items-center justify-center mt-4">
                                     <img src="{{ asset('storage/' . $producto->imagen) }}" alt="Imagen del producto" class="max-w-full max-h-full object-contain">
@@ -58,33 +58,54 @@
                                         <span class="text-gray-300 font-semibold">Cantidad en Inventario: {{ $producto->cantidadEnInventario() }}</span>
                                     </div>
                                     <div class="flex space-x-2 mt-4">
-                                        <a href="{{ route('productos.show', $producto) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Ver</a>
-                                        @role('administrador')
-                                        <a href="{{ route('productos.edit', $producto) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Editar</a>
-                                        @endrole
+
+                                        <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-4 flex flex-col space-y-2">
+                                            @csrf
+                                            <input type="hidden" name="producto_id" value="{{ $producto->id }}">
+
+                                            <div class="flex items-center space-x-2">
+                                                <label for="cantidad" class="text-sm text-gray-300">Cantidad:</label>
+                                                <input type="number" id="cantidad" name="cantidad" value="1" min="1" class="border border-gray-300 rounded px-1 py-1 text-sm w-16">
+
+                                                <!-- carrito -->
+                                                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-1 px-3 rounded text-sm">Agregar
+                                                    <!-- <i class="fa-solid fa-cart-plus fa-2x"  style="color: #a6fa6d"></i> -->
+                                                </button>
+
+                                            </div>
+
+                                            <div class="flex space-x-2">
+                                                <!-- observar -->
+                                                <a href="{{ route('productos.show', $producto) }}" class=" text-white font-semibold py-1 px-3 rounded text-sm inline-block">
+                                                    <i class="fa-solid fa-eye fa-lg"></i>
+                                                </a>
+
+                                                @role('administrador')
+                                                <!-- editar -->
+                                                <a href="{{ route('productos.edit', $producto) }}" class=" text-white font-bold py-1 px-3 rounded text-sm inline-block">
+                                                    <i class="fa-solid fa-pen-to-square fa-lg" ></i></a>
+                                                @endrole
+                                            </div>
+                                        </form>
+
+
                                     </div>
+
+
+
                                     @role('administrador')
 
                                     <div class="mt-4">
                                         <form action="{{ route('productos.destroy', $producto) }}" method="POST" onsubmit="return confirm('¿Está seguro de que desea eliminar este producto?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-full">Eliminar</button>
+                                            <!-- eliminar -->
+                                            <button type="submit" class=" text-white font-bold py-1 px-3 rounded  text-sm inline-block"><i class="fa-solid fa-trash fa-lg" style="color: #e84144"></i></button>
                                         </form>
                                     </div>
-                                    <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-4 flex items-center space-x-2">
-                                        @csrf
-                                        <input type="hidden" name="producto_id" value="{{ $producto->id }}">
-
-                                        <label for="cantidad" class="text-sm text-gray-300">Cantidad:</label>
-                                        <input type="number" id="cantidad" name="cantidad" value="1" min="1" class="border border-gray-300 rounded px-2 py-1 text-sm w-16">
-
-                                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-semibold py-1 px-3 rounded text-sm">
-                                            Agregar
-                                        </button>
-                                    </form>
-
                                     @endrole
+
+
                                 </div>
                             </div>
                             @endforeach

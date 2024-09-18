@@ -31,7 +31,7 @@
                         </form>
                     </div>
 
-                    <div class="overflow-x-auto px-4 py-6">
+                    <div class="overflow-x-auto px-4 py-6 animate__animated animate__flipInY">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-lg">
                             <thead class="bg-gray-800 dark:bg-gray-900">
                                 <tr>

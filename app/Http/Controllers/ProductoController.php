@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use App\Models\Categoria;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -164,7 +163,7 @@ class ProductoController extends Controller
         $nombre = $request->get('nombre');
 
         // Buscar clientes por número de identificación
-        $productos = Producto::where('nombre', 'like', '%' . $nombre . '%')->paginate(20);
+        $productos = Producto::where('nombre', 'like', '%' . $nombre . '%')->paginate(20);    
 
         return view('productos.index', compact('productos'));
     }

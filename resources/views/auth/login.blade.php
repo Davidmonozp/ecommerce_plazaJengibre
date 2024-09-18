@@ -1,12 +1,14 @@
 <x-guest-layout>
 
-    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #062552, #7c4a98);">
+    <div class="min-h-screen flex items-center justify-center" style="background: linear-gradient(to bottom right, #46f8a1, #058d4b);">
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="flex justify-center mb-4">
-                <p class="text-white text-7xl font-medium mb-2 text-center" style="background: linear-gradient(45deg, #e6e8e8, #cae80a); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <div class="flex flex-col items-center mb-4">
+                <img src="{{ asset('images/logoplaza.png') }}" alt="" style="width: 180px; height: 180px; border-radius: 50%; margin-bottom: 1rem;">
+                <p class="text-white text-6xl font-medium">
                     Inicio de Sesión
                 </p>
             </div>
+
 
             <x-validation-errors class="mb-4" />
 
@@ -50,7 +52,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <button type="submit" class="w-full flex justify-center py-3 px-5 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button type="submit" class="w-full flex justify-center py-3 px-5 border border-transparent rounded-md shadow-sm text-xl font-medium text-white bg-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Ingresar
                         </button>
                     </div>
